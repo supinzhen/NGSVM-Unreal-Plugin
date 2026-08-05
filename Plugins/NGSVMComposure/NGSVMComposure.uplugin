@@ -1,0 +1,42 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "NGSVMComposure",
+	"Description": "Compositing integration layer for NGSVMCore, bringing real-time AI matting into UE5.7's Composure and CompositeCore pipelines.",
+	"Category": "Other",
+	"CreatedBy": "PZN Studio",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EngineVersion": "5.7.0",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "NGSVMComposure",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "NGSVMCore",
+			"Enabled": true
+		},
+		{
+			"Name": "Composure",
+			"Enabled": true
+		},
+		{
+			"Name": "Composite",
+			"Enabled": true
+		},
+		{
+			"Name": "CompositeCore",
+			"Enabled": true
+		}
+	]
+}
