@@ -18,11 +18,10 @@ This repo currently ships two plugins:
 - **NGSVMCore** -- the primary, self-contained implementation. Model loading, the RVM/MODNet inference pipelines, `UNGSVMManager`, and the static-image keying functions all live here. Has no dependency on Composure or CompositeCore.
 - **NGSVMComposure** -- integrates NGSVMCore's matting into UE5.7's Composure and CompositeCore compositing systems. Depends on NGSVMCore; only needed if you're compositing through Composure rather than using `UNGSVMManager` directly.
 
-<iframe width="560" height="315"
-src="https://youtu.be/JLAEqOz8H6E"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<p align="center">
+  <img width="854" height="480" alt="NGSVM-Composure-Demo" src="https://github.com/user-attachments/assets/c1eb87e0-52f4-4939-9589-26b91ee12809" />
+</p>
+
 
 > Both plugins are published together in this repo. **NGSVMComposure always requires NGSVMCore** to be present -- if you only need real-time/static-image matting without Composure, you can simply leave the `NGSVMComposure` plugin disabled.
 
