@@ -1,4 +1,4 @@
-# NGSVM -- Non-Green Screen Video Matting
+# NGSVM -- Non-Green Screen Video Matting Unreal Plugin
 
 An Unreal Engine 5.7 plugin for real-time AI matting (background removal), built on UE's NNE (Neural Network Engine). Runs RVM (Robust Video Matting) or MODNet models on CPU or GPU (DirectML) to key a live video/camera feed or a single static image, without needing a green screen.
 
