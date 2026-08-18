@@ -2,6 +2,13 @@
 
 An Unreal Engine 5.7 plugin for real-time AI matting (background removal), built on UE's NNE (Neural Network Engine). Runs RVM (Robust Video Matting) or MODNet models on CPU or GPU (DirectML) to key a live video/camera feed or a single static image, without needing a green screen.
 
+This repo currently ships two plugins:
+
+- **NGSVMCore** -- the primary, self-contained implementation. Model loading, the RVM/MODNet inference pipelines, `UNGSVMManager`, and the static-image keying functions all live here. Has no dependency on Composure or CompositeCore.
+- **NGSVMComposure** -- integrates NGSVMCore's matting into UE5.7's Composure and CompositeCore compositing systems. Depends on NGSVMCore; only needed if you're compositing through Composure rather than using `UNGSVMManager` directly.
+
+> Both plugins are published together in this repo. **NGSVMComposure always requires NGSVMCore** to be present -- if you only need real-time/static-image matting without Composure, you can simply leave the `NGSVMComposure` plugin disabled.
+
 ### Click [HERE](https://youtu.be/JLAEqOz8H6E) to watch the NGSVM Composure demo!
 
 <img width="854" height="480" alt="2026-08-06 14-16-13_3" src="https://github.com/user-attachments/assets/16669a39-4f01-4ade-ad21-a935141302d3" />
@@ -15,20 +22,6 @@ An Unreal Engine 5.7 plugin for real-time AI matting (background removal), built
 - Composure integration: a modern CompositeCore pass and a Legacy Composure-compatible pass, so AI matting can run directly inside a Composure compositing graph
 - Switchable CPU / GPU (DirectML) inference, with FP16 and FP32 variants of each supported model
 - Adjustable inference resolution (`Resolution Scale`) independent of output resolution, so matting quality/performance can be tuned without affecting the final output size
-
-## Plugins
-
-This repo currently ships two plugins:
-
-- **NGSVMCore** -- the primary, self-contained implementation. Model loading, the RVM/MODNet inference pipelines, `UNGSVMManager`, and the static-image keying functions all live here. Has no dependency on Composure or CompositeCore.
-- **NGSVMComposure** -- integrates NGSVMCore's matting into UE5.7's Composure and CompositeCore compositing systems. Depends on NGSVMCore; only needed if you're compositing through Composure rather than using `UNGSVMManager` directly.
-
-<p align="center">
-  <img width="854" height="480" alt="NGSVM-Composure-Demo" src="https://github.com/user-attachments/assets/c1eb87e0-52f4-4939-9589-26b91ee12809" />
-</p>
-
-
-> Both plugins are published together in this repo. **NGSVMComposure always requires NGSVMCore** to be present -- if you only need real-time/static-image matting without Composure, you can simply leave the `NGSVMComposure` plugin disabled.
 
 ## Requirements
 
