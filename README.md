@@ -11,8 +11,7 @@ This repo currently ships two plugins:
 
 ### Click [HERE](https://youtu.be/JLAEqOz8H6E) to watch the NGSVM Composure demo!
 
-<img width="854" height="480" alt="2026-08-06 14-16-13_3" src="https://github.com/user-attachments/assets/16669a39-4f01-4ade-ad21-a935141302d3" />
-
+<img width="1279" height="759" alt="Untitled" src="https://github.com/user-attachments/assets/32ff18f8-d461-4140-bacb-be39b23bab86" />
 
 ## Features
 
