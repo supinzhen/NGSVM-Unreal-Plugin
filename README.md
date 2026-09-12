@@ -9,12 +9,9 @@ This repo currently ships two plugins:
 
 > Both plugins are published together in this repo. **NGSVMComposure always requires NGSVMCore** to be present -- if you only need real-time/static-image matting without Composure, you can simply leave the `NGSVMComposure` plugin disabled.
 
-<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/245faccb-b551-4108-a6f8-4d1782bb29db" />
-
-
 ### Click [HERE](https://youtu.be/JLAEqOz8H6E) to watch the NGSVM Composure demo!
 
-<img width="1279" height="759" alt="Untitled" src="https://github.com/user-attachments/assets/32ff18f8-d461-4140-bacb-be39b23bab86" />
+<img width="1920" height="864" alt="NGSVM_Demo" src="https://github.com/user-attachments/assets/0c4db973-834e-4f57-a63e-3cf98bb0710a" />
 
 ## Features
 
