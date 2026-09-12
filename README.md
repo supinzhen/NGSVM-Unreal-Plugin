@@ -2,6 +2,8 @@
 
 An Unreal Engine 5.7 plugin for real-time AI matting (background removal), built on UE's NNE (Neural Network Engine). Runs RVM (Robust Video Matting) or MODNet models on CPU or GPU (DirectML) to key a live video/camera feed or a single static image, without needing a green screen.
 
+<img width="1920" height="864" alt="NGSVM_Demo" src="https://github.com/user-attachments/assets/0c4db973-834e-4f57-a63e-3cf98bb0710a" />
+
 This repo currently ships two plugins:
 
 - **NGSVMCore** -- the primary, self-contained implementation. Model loading, the RVM/MODNet inference pipelines, `UNGSVMManager`, and the static-image keying functions all live here. Has no dependency on Composure or CompositeCore.
@@ -11,7 +13,7 @@ This repo currently ships two plugins:
 
 ### Click [HERE](https://youtu.be/JLAEqOz8H6E) to watch the NGSVM Composure demo!
 
-<img width="1920" height="864" alt="NGSVM_Demo" src="https://github.com/user-attachments/assets/0c4db973-834e-4f57-a63e-3cf98bb0710a" />
+
 
 ## Features
 
