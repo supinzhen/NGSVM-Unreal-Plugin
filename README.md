@@ -103,7 +103,7 @@ Benchmarked with `NGSVM Manager` on a 1920x1080 source video, measured via Unrea
 
 ## Known Limitations
 
-- The current GPU inference path blocks the Render Thread, so the FPS ceiling is determined by Render Thread stalls rather than actual GPU performance.
+- **Render Thread Bottleneck.** The current GPU inference path blocks the Render Thread, so the FPS ceiling is determined by Render Thread stalls rather than actual GPU performance.
 - **No CUDA support.** UE's stock `NNERuntimeORT` plugin only ever registers `NNERuntimeORTDml` (DirectML) and `NNERuntimeORTCpu` -- there is no CUDA execution provider without integrating a separate third-party ONNX Runtime build. `Execution Device` is limited to CPU and GPU (DirectML) accordingly.
 - **GPU inference is Windows-only.** DirectML is a Windows-only API; on other platforms only CPU inference is available.
 - **`NGSVM Composite Pass` (CompositeCore) requires UE 5.7.** CompositeCore was introduced in 5.7; the Legacy Composure pass (`NGSVM Legacy Composure Pass`) has no such restriction and should work on older Composure-only versions of UE, though this hasn't been verified against a 5.4-5.6 build.
