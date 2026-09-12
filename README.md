@@ -101,16 +101,9 @@ Benchmarked with `NGSVM Manager` on a 1920x1080 source video, measured via Unrea
 | RVM ResNet50 FP32 | 25.26 | 57.51 | 72.73 | 79.28 |
 | MODNet | 39.83 | 74.28 | 80.3 | 85.33 |
 
-### Known limitation: GPU inference currently occupies the Render Thread
+## Known Limitations
 
-At low Resolution Scale (1/4, 1/8), every model converges to a similar FPS ceiling (roughly 74-85 FPS) regardless of how lightweight the model is. This is a known architectural limitation, not measurement noise.
-
-`UNGSVMManager` dispatches GPU inference via `ENQUEUE_RENDER_COMMAND`. This is required for correctness -- DirectML/D3D12 command submission is not thread-safe from an arbitrary background thread, and calling `IModelInstanceRunSync::RunSync()` off the Render Thread crashes inside the GPU driver. The side effect is that `RunSync()`, a blocking call, then occupies the Render Thread's single command queue for the entire duration of inference, stalling frame presentation until it completes -- even though the GPU hardware itself sits idle for most of that window. In one profiling capture: average GPU frametime was ~5.77 ms, while average RenderThread frametime was ~34 ms for the same frames.
-
-The architecturally correct fix is to dispatch inference through NNE's RDG-integrated path (`IModelInstanceRDG` / `EnqueueRDG()`) instead of `IModelInstanceRunSync::RunSync()`, so inference is scheduled into the render graph rather than executed synchronously on the Render Thread. This has been confirmed feasible (`NNERuntimeORTDml` supports `EnqueueRDG()` via `INNERuntimeRDG`) but is not yet implemented. The GPU numbers above, especially at low Resolution Scale where inference itself is cheap, likely understate what's achievable once this is addressed.
-
-## Other Known Limitations
-
+- The current GPU inference path blocks the Render Thread, so the FPS ceiling is determined by Render Thread stalls rather than actual GPU performance.
 - **No CUDA support.** UE's stock `NNERuntimeORT` plugin only ever registers `NNERuntimeORTDml` (DirectML) and `NNERuntimeORTCpu` -- there is no CUDA execution provider without integrating a separate third-party ONNX Runtime build. `Execution Device` is limited to CPU and GPU (DirectML) accordingly.
 - **GPU inference is Windows-only.** DirectML is a Windows-only API; on other platforms only CPU inference is available.
 - **`NGSVM Composite Pass` (CompositeCore) requires UE 5.7.** CompositeCore was introduced in 5.7; the Legacy Composure pass (`NGSVM Legacy Composure Pass`) has no such restriction and should work on older Composure-only versions of UE, though this hasn't been verified against a 5.4-5.6 build.
